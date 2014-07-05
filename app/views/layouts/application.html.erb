@@ -9,16 +9,41 @@
 <body>
   <div id="user_nav">
     <% if current_user %>
-      <h5>Welcome, <%= current_user.name %>!</h5>
-      <br>
-      <br>
-      <a href="/signout" class="signout-button">Sign Out</a>
+      <span>Welcome, <%= current_user.name %>!</span>
+      <span><%= link_to "Dashboard", current_user %></span>
+      <span><%= link_to "Sign out", signout_path %></span>
     <% else %>
-      <a href="/auth/github" class="signin-button">Sign in with Github</a>
+      <%= link_to "Sign in with GitHub", "/auth/github" %>
     <% end %>
   </div>
 
 <%= yield %>
 
-</body>
+
+
+<!--     <div class="push"></div>
+    </div>
+
+    <div class="footer">
+      <div class="row">
+        <div class="large-4 small-4 columns">
+          <p class="footer-text">Code Jam
+            <br>&copy; 2014
+          </p>
+        </div>
+        <div class="large-4 small-4 columns">
+          <p class="footer-text centered">
+            Building Your Support Network
+            <br>Something goes here
+          </p>
+        </div>
+        <div class="large-4 small-4 columns">
+          <p class="footer-text right">
+            <a href="http://twitter.com/yungwelchsgrape" class="white-text">@yungwelchsgrape</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body> -->
+    <%= javascript_include_tag "application" %>
 </html>
