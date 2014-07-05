@@ -7,6 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="user_nav">
+    <% if current_user %>
+      <h5>Welcome, <%= current_user.name %>!</h5>
+      <br>
+      <br>
+      <a href="/signout" class="signout-button">Sign Out</a>
+    <% else %>
+      <a href="/auth/github" class="signin-button">Sign in with Github</a>
+    <% end %>
+  </div>
 
 <%= yield %>
 
