@@ -1,10 +1,12 @@
 <p>this is where we add a song</p>
 
-<div class="song">
-  <h4>Add a Song</h4>
-  <%= form_tag(songs_path , method: "post") do %>
-  <%= label_tag("song[url]", "SoundCloud URL:") %>
-  <%= text_field_tag("song[url]") %>
-  <%= submit_tag("SUBMIT") %>
-  <% end %>
+<div class="row">
+  <div class="large-6 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80">
+    <h4>Add a Song</h4>
+    <%= form_tag(songs_path , method: "post") do %>
+    <%= label_tag("song[url]", "SoundCloud URL:") %>
+    <%= text_field_tag("song[url]") %>
+    <%= submit_tag("SUBMIT") %>
+    <% end %>
+  </div>
 </div>
