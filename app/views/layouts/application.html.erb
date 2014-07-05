@@ -1,49 +1,56 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>CodeJam</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="user_nav">
-    <% if current_user %>
-      <span>Welcome, <%= current_user.name %>!</span>
-      <span><%= link_to "Dashboard", current_user %></span>
-      <span><%= link_to "Sign out", signout_path %></span>
-    <% else %>
-      <%= link_to "Sign in with GitHub", "/auth/github" %>
-    <% end %>
-  </div>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
 
-<%= yield %>
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Code Jam" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
 
 
+    <div class="wrapper">
+      <div class="contain-to-grid sticky">
+        <nav class="top-bar" data-topbar data-options="sticky_on: large">
+          <ul class="title-area">
+            <li class="name"></li>
+          </ul>
+          <section class="top-bar-section no-color">
+          <ul class="right">
+    <!-- <div class="ten columns centered"> -->
+      <% if current_user %>
+        <li><span class="username">Welcome, <%= current_user.name %>!</span></li>
+        <li><span><%= link_to "Add a Song", new_song_path %></span></li>
+        <li><span><%= link_to "Sign out", signout_path %></span></li>
+      <% else %>
+        <li><span><%= link_to "Sign in with GitHub", "/auth/github" %></span></li>
 
-<!--     <div class="push"></div>
-    </div>
+        </ul>
+      <% end %>
+    <!-- </div> -->
+</section>
+</nav>
+</div>
+    <%= yield %>
 
-    <div class="footer">
-      <div class="row">
-        <div class="large-4 small-4 columns">
-          <p class="footer-text">Code Jam
-            <br>&copy; 2014
-          </p>
-        </div>
-        <div class="large-4 small-4 columns">
-          <p class="footer-text centered">
-            Building Your Support Network
-            <br>Something goes here
-          </p>
-        </div>
-        <div class="large-4 small-4 columns">
-          <p class="footer-text right">
-            <a href="http://twitter.com/yungwelchsgrape" class="white-text">@yungwelchsgrape</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </body> -->
+
     <%= javascript_include_tag "application" %>
+  </body>
 </html>
+
+

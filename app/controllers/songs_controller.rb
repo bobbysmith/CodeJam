@@ -1,3 +1,5 @@
+require "soundcloud"
+
 class SongsController < ApplicationController
   before_filter :authenticate
 
@@ -19,27 +21,27 @@ class SongsController < ApplicationController
     redirect_to root_path
   end
 
-  def edit
-    @song = Song.find(params[:id])
-  end
+  # def edit
+  #   @song = current_user.url
+  # end
 
-  def update
-    @song = Song.find(params[:id])
+  # def update
+  #   @song = Song.find(params[:id])
 
-    if params[:song][:url].blank?
-      flash[:error] = "Please enter a URL"
-      # params[:song].delete(:song)
-    end
+  #   if params[:song][:url].blank?
+  #     flash[:error] = "Please enter a URL"
+  #     # params[:song].delete(:song)
+  #   end
 
-    @song.update(song_params)
-    redirect_to user_path[:id]
-  end
+  #   @song.update(song_params)
+  #   redirect_to user_path[:id]
+  # end
 
-  def destroy
-    @song = Song.find(params[:id])
-    @song.destroy
-    redirect_to root_path
-  end
+  # def destroy
+  #   @song = Song.find(params[:id])
+  #   @song.destroy
+  #   redirect_to root_path
+  # end
 
   private
   def song_params

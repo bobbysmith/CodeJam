@@ -16,24 +16,23 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     user.save
-    redirect_to user_url
+    redirect_to root_path
   end
 
-  def edit
-    @user = current_user
-    ####
-  end
+  # def edit
+  #   @user = current_user
+  # end
 
-  def update
-    @user = current_user
+  # def update
+  #   @user = current_user
 
-    if params[:user][:name].nil?
-      params[:user].delete(:name)
-    end
+  #   if params[:user][:name].nil?
+  #     params[:user].delete(:name)
+  #   end
 
-    @user.update(user_params)
-    redirect_to user_path(params[:id])
-  end
+  #   @user.update(user_params)
+  #   redirect_to user_path(params[:id])
+  # end
 
   def destroy
     session[:user_id] = nil
