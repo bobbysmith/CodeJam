@@ -14,10 +14,10 @@
  *= require_self
  *= require foundation_and_overrides
  */
-
-/* html, body {
+/*
+ html, body {
   height: 100%;
-  background: url(boombox.jpg) no-repeat center center fixed;
+  background: url(boombox2.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

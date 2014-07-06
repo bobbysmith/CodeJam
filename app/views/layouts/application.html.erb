@@ -19,6 +19,13 @@
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script>
+      SC.initialize({
+        client_id: "YOUR_CLIENT_ID"
+        // redirect_uri: "http://example.com/callback.html",
+      });
+    </script>
   </head>
 
   <body>
