@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # root to: "home#index"
 
   resources :users
-  resources :songs, except: [:edit, :update, :destroy]
+  resources :songs do
+    member { post :vote }
+  end
 
 
   CodeJam::Application.routes.draw do

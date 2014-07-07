@@ -47,7 +47,7 @@
             </ul>
             <ul class="right">
               <% if current_user %>
-                <li class="username"><span>Welcome, <%= current_user.name %>!</span></li>
+                <li class="username"><span>Welcome, <%= current_user.name %>! (Vote Total: <%= current_user.reputation_for(:votes).to_i %>)</span></li>
                 <li><span><%= link_to "Add a Song", new_song_path %></span></li>
                 <li><span><%= link_to "My Songs", user_path(current_user.id) %></span></li>
                 <li><span><%= link_to "Sign out", signout_path %></span></li>

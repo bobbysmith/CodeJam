@@ -4,7 +4,8 @@ class SongsController < ApplicationController
   # before_filter :authenticate
 
   def index
-    @songs = Song.all
+    @songs = Song.find_with_reputation(:votes, :all, order: "votes")
+    @songs = @songs.sort_by(&:votes).reverse
   end
 
   def show
@@ -41,6 +42,13 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
     redirect_to root_path
+  end
+
+  def vote
+    value = params[:type] == "like" ? 1 : -1
+    @song = Song.find(params[:id])
+    @song.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back
   end
 
   private
