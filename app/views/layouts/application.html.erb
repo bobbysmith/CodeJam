@@ -49,6 +49,7 @@
               <% if current_user %>
                 <li class="username"><span>Welcome, <%= current_user.name %>!</span></li>
                 <li><span><%= link_to "Add a Song", new_song_path %></span></li>
+                <li><span><%= link_to "My Songs", user_path(current_user.id) %></span></li>
                 <li><span><%= link_to "Sign out", signout_path %></span></li>
               <% else %>
                 <li><span><%= link_to "Sign in with GitHub", "/auth/github" %></span></li>
@@ -68,17 +69,6 @@
         <br>
         <br>
         <!-- <%= image_tag("cassette.png") %> -->
-       <!--  <div class="signin">
-          <% if current_user %>
-            <h5>Welcome, <%= current_user.name %>!</h5>
-            <br>
-            <br>
-            <span><%= link_to "Sign out", signout_path %></span>
-          <% else %>
-            <span><%= link_to "Sign in with GitHub", "/auth/github" %></span>
-          <% end %>
-        </div> -->
-
       </div>
     </div>
 
