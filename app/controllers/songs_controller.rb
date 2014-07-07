@@ -1,7 +1,7 @@
 require "soundcloud"
 
 class SongsController < ApplicationController
-  before_filter :authenticate
+  # before_filter :authenticate
 
   def index
     @songs = Song.all

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
 
   CodeJam::Application.routes.draw do
-    root to: "home#index"
     get "/auth/:provider/callback" => "sessions#create"
     get "/signout" => "sessions#destroy", :as => :signout
     get "/login", to: "users#login"
+    root to: "songs#index"
   end
 end
