@@ -9,9 +9,11 @@
       <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%"     src="https://player.soundcloud.com/player.swf?    url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2Ferb<%= s.url %>">    </embed>
     </object>
     <h6>Shared by: <a href="/users/<%= s.user.id %>"><%= s.user.name %></a></h6>
-    <%= pluralize s.reputation_for(:votes).to_i, "vote" %>
-    <%= link_to "like", vote_song_path(s, type: "like"), method: "post" %>
-    <%= link_to "dislike", vote_song_path(s, type: "dislike"), method: "post" %>
+    <% if current_user %>
+      <%= pluralize s.reputation_for(:votes).to_i, "vote" %>
+      <%= link_to "like", vote_song_path(s, type: "like"), method: "post" %>
+      <%= link_to "dislike", vote_song_path(s, type: "dislike"), method: "post" %>
+    <% end %>
   <% end %>
 
 </div>

@@ -1,14 +1,15 @@
 <p>this is where you can view someones profile</p>
   <div class="large-6 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80">
 
-  <h3><%= @user.name %>'s Code Jams</h3>
+  <h3><%= @user.name %>'s Code Jams </h3>
+  <h4>Vote Total: <%= current_user.reputation_for(:votes).to_i %></h4>
   <% @songs.each do |song| %>
     <!-- <a href="<%= song.url %>" target="_blank"><%= song.url %></a> -->
       <object height="50" width="100%">
-      <param name="movie" value="https://player.soundcloud.com/player.swf?url=<%= song.url %>&player_type=tiny{widgetParams}"></param>
+      <param name="movie" value="https://player.soundcloud.com/player.swf?url=<%= song.url %>&player_type=tiny{show_comments=false}"></param>
       <param name="allowscriptaccess" value="always"></param>
       <param name="wmode" value="transparent"></param>
-      <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%"     src="https://player.soundcloud.com/player.swf?    url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2Ferb<%= song.url %>">    </embed>
+      <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%"     src="https://player.soundcloud.com/player.swf?{show_comments=false}&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2Ferb<%= song.url %>">    </embed>
     </object>
   <% end %>
 </div>

@@ -37,7 +37,7 @@
           </ul>
           <section class="top-bar-section no-color">
             <ul class="left">
-              <a href="#" data-reveal-id="myModal">About</a>
+              <a href="#" data-reveal-id="myModal" title="About">About</a>
               <div id="myModal" class="reveal-modal" data-reveal>
                 <h2>Jam on it.</h2>
                 <p>Music is a huge driving force in most people's lives and can be very inspirational.  the idea behind this project is for other developers to be able to share what is driving them that day, what they are jamming to and hacking away.</p>
@@ -47,12 +47,12 @@
             </ul>
             <ul class="right">
               <% if current_user %>
-                <li class="username"><span>Welcome, <%= current_user.name %>! (Vote Total: <%= current_user.reputation_for(:votes).to_i %>)</span></li>
-                <li><span><%= link_to "Add a Song", new_song_path %></span></li>
-                <li><span><%= link_to "My Songs", user_path(current_user.id) %></span></li>
-                <li><span><%= link_to "Sign out", signout_path %></span></li>
+                <li class="username"><span>Welcome, <%= current_user.name %>! </span><span title="Total Votes">(<%= current_user.reputation_for(:votes).to_i %>)</span></li>
+                <li><span title="Add a Song"><%= link_to "Add a Song", new_song_path %></span></li>
+                <li><span title="My Songs"><%= link_to "My Songs", user_path(current_user.id) %></span></li>
+                <li><span title="Sign out"><%= link_to "Sign out", signout_path %></span></li>
               <% else %>
-                <li><span><%= link_to "Sign in with GitHub", "/auth/github" %></span></li>
+                <li><span title="Sign in"><%= link_to "Sign in with GitHub", "/auth/github" %></span></li>
             </ul>
               <% end %>
           </section>
