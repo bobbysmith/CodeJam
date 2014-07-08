@@ -6,7 +6,7 @@
   <% @songs.each do |song| %>
     <!-- <a href="<%= song.url %>" target="_blank"><%= song.url %></a> -->
       <object height="50" width="100%">
-      <param name="movie" value="https://player.soundcloud.com/player.swf?url=<%= song.url %>&player_type=tiny{show_comments=false}"></param>
+      <param name="movie" value="https://player.soundcloud.com/player.swf?url=<%= song.url %>&player_type=tiny&show_comments=false"></param>
       <param name="allowscriptaccess" value="always"></param>
       <param name="wmode" value="transparent"></param>
       <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%"     src="https://player.soundcloud.com/player.swf?{show_comments=false}&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2Ferb<%= song.url %>">    </embed>

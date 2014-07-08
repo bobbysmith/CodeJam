@@ -20,16 +20,17 @@ $(function(){ $(document).foundation(); });
 
 $(document).ready(function(){
   $(".like").on("click", function (e){
-    e.preventDefault;
+    e.preventDefault();
     var url = e.target.href;
       $.post(url, {}, function(data, status) {
         $($(e.target).siblings()[1]).html(data.votes + " likes");
         // code to change menu number
+        // $($(e.target).siblings()[]).html(data.votes);
       });
     return false;
   });
   $(".dislike").on("click", function (e){
-    e.preventDefault;
+    e.preventDefault();
     var url = e.target.href;
       $.post(url, {}, function(data, status) {
         $($(e.target).siblings()[1]).html(data.votes + " likes");
