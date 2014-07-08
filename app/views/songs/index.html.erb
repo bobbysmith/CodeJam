@@ -1,23 +1,58 @@
 <div class="large-6 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80">
 <!--   <h1>I Am the Player</h1>
   <p>home#index  root_path</p> -->
-  <% @songs.each do |s| %>
-    <object height="20px" width="100%">
-      <param name="movie" value="https://player.soundcloud.com/player.swf?url=<%= s.url %>&player_type=tiny&show_comments=false"></param>
-      <param name="allowscriptaccess" value="always"></param>
-      <param name="wmode" value="transparent"></param>
-      <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%"     src="https://player.soundcloud.com/player.swf?    url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2Ferb<%= s.url %>">    </embed>
-    </object>
-    <h6>Shared by: <a href="/users/<%= s.user.id %>"><%= s.user.name %></a></h6>
-    <div>
-      <% if current_user %>
-        <%= link_to "like", vote_song_path(s, type: "like"), method: "post", class: "like" %>
-        <%= link_to "dislike", vote_song_path(s, type: "dislike"), method: "post", class: "dislike" %>
-      <% end %>
-      <div class="total">
-        <%= pluralize s.reputation_for(:votes).to_i, "like" %>
+  <% @songs.each_with_index do |s, i| %>
+      <object height="20px" width="100%" id="song<%= i %>">
+        <param name="movie" value="https://player.soundcloud.com/player.swf?url=<%= s.url %>&enable_api=true&player_type=tiny&show_comments=false&object_id=song<%= i %>"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <param name="wmode" value="transparent"></param>
+        <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%" src="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2Ferb<%= s.url %>&enable_api=true&object_id=song<%= i %>" name="song<%= i %>"></embed>
+      </object>
+      <h6>Shared by: <a href="/users/<%= s.user.id %>" class="shared-by"><%= s.user.name %></a></h6>
+      <div>
+        <% if current_user %>
+          <span ir-src="" ic-verb="" ic-trigger-on=""><%= link_to "like", vote_song_path(s, type: "like"), method: "post", class: "like" %></span> /
+          <span ir-src="" ic-verb="" ic-trigger-on=""><%= link_to "dislike", vote_song_path(s, type: "dislike"), method: "post", class: "dislike" %></span>
+        <% end %>
+        <div class="total">
+          <%= pluralize s.reputation_for(:votes).to_i, "like" %>
+        </div>
       </div>
-    </div>
+  <hr>
   <% end %>
-
 </div>
+
+<!--
+
+developers.soundcloud.com/docs/widget#methods
+
+use some js to `enable_api` check
+use soundcloud.addEventListener function to listen to swf player
+
+list for...
+
+soundcloud.addEventListener('onMediaEnd', function(player, data) {
+  console.log('yo nigga this worked!')
+}
+
+api_play()
+
+-->
+
+<% content_for :js do %>
+
+<script type="text/javascript">
+  soundcloud.addEventListener('onMediaEnd', function(player, data) {
+    // debugger;
+    // needs to know what the next song is and play it
+    console.log("end");
+  });
+  soundcloud.addEventListener('onPlayerReady', function(player, data) {
+    console.log('readddyyy');
+  });
+  soundcloud.addEventListener('onMediaSeek', function(player, data) {
+    console.log('seek!')
+  });
+</script>
+
+<% end %>

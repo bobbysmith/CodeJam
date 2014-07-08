@@ -15,11 +15,11 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   	<title><%= content_for?(:title) ? yield(:title) : "Code Jam" %></title>
-
-  	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
     <script src="//connect.soundcloud.com/sdk.js"></script>
+    <!-- <script type="text/javascript" src="scripts/soundcloud.player.api.js"></script> -->
     <script>
       SC.initialize({
         client_id: "YOUR_CLIENT_ID"
@@ -48,6 +48,7 @@
             <ul class="right">
               <% if current_user %>
                 <li class="username"><span>Welcome, <%= current_user.name %>! </span><span class="total-votes" title="Total Votes">(<%= current_user.reputation_for(:votes).to_i %>)</span></li>
+                <li><span title="Home"><%= link_to "Home", root_path %></span></li>
                 <li><span title="Add a Song"><%= link_to "Add a Song", new_song_path %></span></li>
                 <li><span title="My Songs"><%= link_to "My Songs", user_path(current_user.id) %></span></li>
                 <li><span title="Sign out"><%= link_to "Sign out", signout_path %></span></li>
@@ -75,6 +76,8 @@
     <%= yield %>
 
     <%= javascript_include_tag "application" %>
+    <script src="https://s3.amazonaws.com/intercoolerjs.org/release/intercooler-0.4.1.min.js"></script>
+    <%= yield :js %>
   </body>
 </html>
 

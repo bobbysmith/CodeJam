@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require foundation_and_overrides
+ *= require_self
  */
 /*
  html, body {
@@ -24,6 +24,10 @@
   background-size: cover;
 }*/
 
+/** {
+  border: 1px solid green;
+}
+*/
 .left {
   padding-top: 10px;
 }
@@ -38,3 +42,8 @@ object {
   height: 20px;
 }
 
+h6 .shared-by a {
+  font-size: 0.5em;
+
+  color: black;
+}
