@@ -48,16 +48,16 @@ class SongsController < ApplicationController
     value = params[:type] == "like" ? 1 : -1
     @song = Song.find(params[:id])
     @song.add_or_update_evaluation(:votes, value, current_user)
-    # respond_to do |format|
-    #   format.json do
-    #     render :json => {
-    #       :status => :ok,
-    #       :message => "Success!",
-    #       :votes => @song.reputation_for(:votes).to_i
-    #     }.to_json
-    #   end
-    # end
-      redirect_to :back
+    respond_to do |format|
+      format.json do
+        render :json => {
+          :status => :ok,
+          :message => "Success!",
+          :votes => @song.reputation_for(:votes).to_i
+        }.to_json
+      end
+    end
+      # redirect_to :back
   end
 
   private

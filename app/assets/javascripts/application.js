@@ -20,29 +20,31 @@
 $(function(){ $(document).foundation(); });
 
 
-// $(document).ready(function(){
-//   $(".like").on("click", function (e){
-//     e.preventDefault();
-//     var url = e.target.href;
-//     // if(current_user)
-//       $.post(url, {}, function(data, status) {
-//         $($(e.target).siblings()[1]).html(data.votes + " likes");
-//         // code to change menu number
-//       });
-//     return false;
-//   });
-//   $(".dislike").on("click", function (e){
-//     e.preventDefault();
-//     var url = e.target.href;
-//       $.post(url, {}, function(data, status) {
-//         $($(e.target).siblings()[1]).html(data.votes + " likes");
-//         // code to change menu number
-//       });
-//     return false;
-//   });
+$(document).ready(function(){
+  $(".like").on("click", function (e){
+    var $container = $(this).parent().parent();
+    var $total = $container.find('.total');
+    e.preventDefault();
+    var url = e.target.href;
+    // if(current_user)
+      $.post(url, {}, function(data, status) {
+        $total.html(data.votes + " likes");
+        // code to change menu number
+      });
+    return false;
+  });
+  $(".dislike").on("click", function (e){
+    var $container = $(this).parent().parent();
+    var $total = $container.find('.total');
+    e.preventDefault();
+    var url = e.target.href;
+      $.post(url, {}, function(data, status) {
+        // debugger;
+        $total.html(data.votes + " likes");
+        // code to change menu number
+      });
+    return false;
+  });
 
-// });
+});
 
-
-// listen for SC.Widget.Events.READY -- this tells us the widget is ready
-// SC.Widget.Events.FINISH tells us when the song is done !!!!

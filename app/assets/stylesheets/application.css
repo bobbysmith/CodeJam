@@ -40,10 +40,23 @@
 
 object {
   height: 20px;
+  margin-bottom: 5px;
 }
 
 h6 .shared-by a {
   font-size: 0.5em;
 
   color: black;
+}
+
+.total {
+  margin-top: 5px;
+  display: inline-block;
+
+}
+
+.likes {
+  margin-left: 3px;
+  margin-top: 5px;
+  display: inline;
 }
