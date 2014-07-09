@@ -13,38 +13,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
+// require turbolinks
 //= require soundcloud-player
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
 
+var tracks = [];
 
 $(document).ready(function(){
-  $(".like").on("click", function (e){
-    var $container = $(this).parent().parent();
-    var $total = $container.find('.total');
-    e.preventDefault();
-    var url = e.target.href;
-    // if(current_user)
-      $.post(url, {}, function(data, status) {
-        $total.html(data.votes + " likes");
-        // code to change menu number
+  $(".track").each(function(index, elem) {
+    var $elem = $(elem);
+    var track = {
+      id: $elem.data('track-id'),
+      $el: $elem,
+      $vote: $elem.find('.vote'),
+      $total: $elem.find('.total')
+    };
+    track.$vote.on("click", function (e){
+      e.preventDefault();
+      var url = $(this).attr('href');
+      $.ajax({
+        url: url,
+        data: {
+          type: $(this).data('type')
+        },
+        method: 'POST',
+        dataType: 'json',
+        success: function(data, status) {
+          track.$total.html(data.votes + " likes");
+        }
       });
-    return false;
+    });
+    tracks.push(track);
   });
-  $(".dislike").on("click", function (e){
-    var $container = $(this).parent().parent();
-    var $total = $container.find('.total');
-    e.preventDefault();
-    var url = e.target.href;
-      $.post(url, {}, function(data, status) {
-        // debugger;
-        $total.html(data.votes + " likes");
-        // code to change menu number
-      });
-    return false;
-  });
-
 });
 

@@ -64,18 +64,19 @@
 
     <div class="row">
       <div class="large-6 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80" id="form">
-      <br>
-      <br>
-        <h1><%= link_to image_tag("logo2.png", :border => 0), root_url %></h1>
+        <br>
+        <br>
+        <div id="logo"><%= link_to image_tag("logo2.png", :border => 0), root_url %></div>
         <br>
         <br>
       </div>
     </div>
 
+    <div class="row">
     <%= yield %>
+    </div>
 
     <%= javascript_include_tag "application" %>
-    <script src="https://s3.amazonaws.com/intercoolerjs.org/release/intercooler-0.4.1.min.js"></script>
     <%= yield :js %>
   </body>
 </html>

@@ -31,7 +31,6 @@ class SongsController < ApplicationController
 
     if params[:song][:url].blank?
       flash[:error] = "Please enter a URL"
-      # params[:song].delete(:song)
     end
 
     @song.update(song_params)
@@ -57,7 +56,6 @@ class SongsController < ApplicationController
         }.to_json
       end
     end
-      # redirect_to :back
   end
 
   private
