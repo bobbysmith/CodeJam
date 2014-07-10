@@ -28,8 +28,9 @@
 <% content_for :js do %>
   <script type="text/javascript">
     soundcloud.addEventListener('onMediaEnd', function(player, data) {
-      // check for when the media ends and get the player object and chefck its id and then fin the object inside the tracks array that has id and get the index of that object.... get the nex track in the array through incrementing and use the soundcloud api to start the player by the id of that next track
+      // check for when the media ends and get the player object and check its id and then find the object inside the tracks array that has id and get the index of that object.... get the nex track in the array through incrementing and use the soundcloud api to start the player by the id of that next track
       var current =
+      var ended = this.id;
       console.log("end");
     });
     soundcloud.addEventListener('onPlayerReady', function(player, data) {

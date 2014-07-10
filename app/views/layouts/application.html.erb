@@ -15,6 +15,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   	<title><%= content_for?(:title) ? yield(:title) : "syntrax" %></title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
@@ -40,8 +41,8 @@
               <a href="#" data-reveal-id="myModal" title="About">About</a>
               <div id="myModal" class="reveal-modal" data-reveal>
                 <h2>Jam on it.</h2>
-                <p>Music is a huge driving force in most people's lives and can be very inspirational.  the idea behind this project is for other developers to be able to share what is driving them that day, what they are jamming to and hacking away.</p>
-                <p>I'm always posting new music and what I'm listening to on my Twitter.  Follow or just check me out every now and then to see what I'm listening to.<br><a href="http://twitter.com/yungwelchsgrape" target="_blank" class="white-text">@yungwelchsgrape</a></p>
+                <p>Music is a huge driving force in most people's lives and can be very inspirational.  The idea behind syntrax is for other developers to be able to share what they are listening to and coding to.  You need good syntrax for good syntax.</p>
+                <p>I'm always posting what I'm listening to on my Twitter.  Follow or just check me to see what I'm listening to.<br><a href="http://twitter.com/yungwelchsgrape" target="_blank" class="white-text">@yungwelchsgrape</a></p>
                 <a class="close-reveal-modal">&#215;</a>
               </div>
             </ul>
@@ -63,12 +64,8 @@
 
 
     <div class="row">
-      <div class="large-6 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80" id="form">
-        <br>
-        <br>
+      <div class="large-9 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80" id="form">
         <div id="logo"><%= link_to image_tag("logo2.png", :border => 0), root_url %></div>
-        <br>
-        <br>
       </div>
     </div>
 

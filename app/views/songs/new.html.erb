@@ -1,9 +1,9 @@
 
 <div class="row">
-  <div class="large-6 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80">
+  <div class="large-6 medium-8 small-9 large-centered medium-centered small-centered columns top-space-80" id="box2">
     <h4>Add a Song</h4>
     <%= form_tag(songs_path , method: "post") do %>
-    <%= label_tag("song[url]", "SoundCloud URL:") %>
+    <%= label_tag "song[url]", "SoundCloud URL", :class => "sc-url" %>
     <%= text_field_tag("song[url]") %>
     <%= submit_tag("SUBMIT") %>
     <% end %>
