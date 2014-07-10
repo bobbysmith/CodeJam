@@ -41,7 +41,7 @@ $(document).ready(function(){
         method: 'POST',
         dataType: 'json',
         success: function(data, status) {
-          track.$total.html(data.votes + " likes");
+          track.$total.html(data.votes);
         }
       });
     });

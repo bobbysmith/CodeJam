@@ -11,7 +11,7 @@
       <p id="share">Shared by: <a href="/users/<%= s.user.id %>" class="shared-by"><%= s.user.name %></a></p>
       <div>
         <div class="total">
-          <%= pluralize s.reputation_for(:votes).to_i, "like" %>
+          <%= pluralize s.reputation_for(:votes).to_i, "reps" %>
         </div>
         <div class="likes">
           <% if current_user %>
@@ -29,8 +29,8 @@
   <script type="text/javascript">
     soundcloud.addEventListener('onMediaEnd', function(player, data) {
       // check for when the media ends and get the player object and check its id and then find the object inside the tracks array that has id and get the index of that object.... get the nex track in the array through incrementing and use the soundcloud api to start the player by the id of that next track
-      var current =
-      var ended = this.id;
+      // var current =
+      // var ended = this.id;
       console.log("end");
     });
     soundcloud.addEventListener('onPlayerReady', function(player, data) {

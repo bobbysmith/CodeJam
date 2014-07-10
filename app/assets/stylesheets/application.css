@@ -14,27 +14,31 @@
  *= require foundation_and_overrides
  *= require_self
  */
-/*
+
  html, body {
   height: 100%;
-  background: url(boombox2.jpg) no-repeat center center fixed;
+  background: url(boombox3.jpg) no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}*/
-
-/** {
-  border: 1px solid green;
 }
-*/
+
+.top-bar-section ul {
+  background: none;
+}
+
+.top-bar .toggle-topbar.menu-icon {
+  margin-top: -37px;
+}
+
+.top-bar .toggle-topbar.menu-icon a {
+  background: none;
+}
+/*
 body {
   background: url(boombox.jpg) no-repeat fixed;
-}
-
-ul .right {
-  background: black;
-}
+}*/
 
 #logo {
   z-index: 100;
@@ -43,15 +47,12 @@ ul .right {
   margin-top: 30px;
   margin-bottom: 40px;
   min-height: 50px;
-  /*padding: 10px;*/
-  /*position: fixed;*/
 }
 
 img {
-  /*margin-left: 25px;*/
   margin: 0 auto;
-display: block;
-padding: 10px;
+  display: block;
+  padding: 10px;
 }
 
 .sc-url {
@@ -60,7 +61,7 @@ padding: 10px;
 }
 
 #box {
-  background-color:rgba(0,0,0,0.7);
+  background-color:rgba(0,0,0,0.8);
   padding: 5px;
   border-radius: 15px;
   /*opacity: 0.7;*/
