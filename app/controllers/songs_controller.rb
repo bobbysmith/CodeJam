@@ -4,8 +4,8 @@ class SongsController < ApplicationController
   # before_filter :authenticate
 
   def index
-    @songs = Song.find_with_reputation(:votes, :all, order: "votes")
-    @songs = @songs.sort_by(&:votes).reverse
+    @songs = Song.find_with_reputation(:votes, :all, order: "votes").sort_by(&:votes).reverse
+    @songs = Kaminari.paginate_array(@songs).page(params[:page]).per(5)
   end
 
   def show
