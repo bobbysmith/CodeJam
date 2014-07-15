@@ -39,6 +39,7 @@ class SongsController < ApplicationController
 
   def destroy
     @song = Song.find(params[:id])
+    @song.delete_evaluation(:votes, current_user)
     @song.destroy
     redirect_to user_path(current_user.id)
   end
