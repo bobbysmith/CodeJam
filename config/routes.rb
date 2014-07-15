@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   # root to: "home#index"
 
-  resources :users
+  resources :users, except: [:edit, :update]
   resources :songs do
     member { post :vote }
   end

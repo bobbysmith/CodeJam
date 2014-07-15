@@ -62,12 +62,13 @@ img {
 
 #box {
   background-color:rgba(0,0,0,0.8);
-  padding: 5px;
+  padding: 10px;
   border-radius: 15px;
   /*opacity: 0.7;*/
   -webkit-box-shadow: 7px 8px 21px 1px rgba(0,0,0,0.75);
   -moz-box-shadow: 7px 8px 21px 1px rgba(0,0,0,0.75);
   box-shadow: 7px 8px 21px 1px rgba(0,0,0,0.75);
+  margin-bottom: 40px;
 }
 
 #box2 {

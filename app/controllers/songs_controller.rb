@@ -18,24 +18,31 @@ class SongsController < ApplicationController
 
   def create
     song = current_user.songs.new(song_params)
-    song.save
-    redirect_to root_path
-  end
-
-  def edit
-    @song = current_user.url
-  end
-
-  def update
-    @song = Song.find(params[:id])
-
-    if params[:song][:url].blank?
-      flash[:error] = "Please enter a URL"
+    if (params[:song][:url] =~ /soundcloud{1}/i)
+      song.save
+      redirect_to root_path
+    else
+      redirect_to new_song_path
     end
-
-    @song.update(song_params)
-    redirect_to user_path[:id]
   end
+
+  # def edit
+  #   @song = current_user.url
+  # end
+
+  # def update
+  #   @song = Song.find(params[:id])
+
+    #   @song.update(song_params)
+    #   redirect_to user_path[:id]
+    #   params[:song].delete(:url)
+    # end
+
+    # if params[:song][:url].blank?
+    #   flash[:error] = "Please enter a URL"
+    # end
+
+  # end
 
   def destroy
     @song = Song.find(params[:id])

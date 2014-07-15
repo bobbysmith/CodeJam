@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, except: :show
 
   def index
     @users = User.all
@@ -7,8 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @songs = Song.find_with_reputation(:votes, :all, order: "votes").sort_by(&:votes).reverse
-    @songs = Song.where(user_id: @user.id).page(params[:page]).per(10)
+    @songs = Song.find_with_reputation(:votes, :all, {:conditions => ['user_id = ?', @user.id], order: "votes"}).sort_by(&:votes).reverse
+    @songs = Kaminari.paginate_array(@songs).page(params[:page]).per(10)
+
+    # @songs = Song.where(user_id: @user.id).page(params[:page]).per(10)
   end
 
   def new
