@@ -26,3 +26,5 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+[ ![Codeship Status for bobbysmith/syntrax](https://codeship.io/projects/b451e1f0-eea0-0131-802f-625aac73728b/status)](https://codeship.io/projects/26893)
