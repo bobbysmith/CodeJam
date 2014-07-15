@@ -29,14 +29,7 @@
 <% content_for :js do %>
   <script type="text/javascript">
     soundcloud.addEventListener('onMediaEnd', function(player, data) {
-      // check for when the media ends and get the player object and check its id and then find the object inside the tracks array that has id and get the index of that object.... get the nex track in the array through incrementing and use the soundcloud api to start the player by the id of that next track
-      // var current =
-      // var ended = this.id;
       console.log("end!");
-      // trac = tracks.shift();
-      // var nextPlayer = soundcloud.getPlayer("song" + trac.id);
-      // player.api_play();
-
       var nextNumber = parseInt(player.name.substr(-1)) + 1;
       console.log(nextNumber);
       var nextSong = "song" + nextNumber;
@@ -51,19 +44,3 @@
   </script>
 <% end %>
 
-<!--
-
-developers.soundcloud.com/docs/widget#methods
-
-use some js to `enable_api` check
-use soundcloud.addEventListener function to listen to swf player
-
-list for...
-
-soundcloud.addEventListener('onMediaEnd', function(player, data) {
-  console.log('yo nigga this worked!')
-}
-
-api_play()
-
--->

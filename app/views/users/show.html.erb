@@ -13,6 +13,9 @@
     <div class="total">
       <%= pluralize s.reputation_for(:votes).to_i, "reps" %>
     </div>
+    <% if current_user == @user %>
+      <%= link_to(" Delete?", song_path(s.id), method: "delete", confirm: 'Are you sure?') %>
+    <% end %>
     <hr>
   <% end %>
 </div>
@@ -23,9 +26,6 @@
   <script type="text/javascript">
     soundcloud.addEventListener('onMediaEnd', function(player, data) {
       console.log("end!");
-      // trac = tracks.shift();
-      // var nextPlayer = soundcloud.getPlayer("song" + trac.id);
-      // player.api_play();
 
       var nextNumber = parseInt(player.name.substr(-1)) + 1;
       console.log(nextNumber);

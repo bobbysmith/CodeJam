@@ -5,7 +5,7 @@ class SongsController < ApplicationController
 
   def index
     @songs = Song.find_with_reputation(:votes, :all, order: "votes").sort_by(&:votes).reverse
-    @songs = Kaminari.paginate_array(@songs).page(params[:page]).per(5)
+    @songs = Kaminari.paginate_array(@songs).page(params[:page]).per(10)
   end
 
   def show
@@ -40,7 +40,7 @@ class SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
-    redirect_to root_path
+    redirect_to user_path(current_user.id)
   end
 
   def vote
