@@ -40,7 +40,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'debugger', group: [:development, :test]
 gem 'hirb'
 gem 'skeleton-rails'
-gem 'pry-debugger'
+# gem 'pry-debugger'
 gem 'soundcloud'
 gem 'omniauth-soundcloud', '~> 1.0.0'
 gem 'omniauth'
